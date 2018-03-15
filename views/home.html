@@ -1,1 +1,46 @@
-<h1 class="text-center">Hello, world!</h1>
+<div class="container" ng-controller="storyController as storyCtrl">
+  <div class="row">
+      <div class="col-md-12">
+          <h1 class="text-center">Form Post </h1>
+      </div>
+  </div>
+  <div class="row justify-content-center">
+      <div class="col-md-6">
+          <form ng-submit="storyCtrl.addStory()" name="storyForm">
+              <div class="form-group">
+                <input type="hidden" name="authorId" ng-model="authorId" class="form-control" value="5aa3148a268d9b158e3a068c" />
+              </div>
+              <div class="form-group">
+                <input type="hidden" name="status" ng-model="status" class="form-control" value="1" />
+              </div>
+              <div class="form-group" ng-class="{ 'has-error' : storyForm.title.$invalid && !storyForm.title.$pristine }">
+                <input type="text" name="title" value="" ng-model="storyCtrl.title" class="form-control" placeholder="Title"/>
+				<p ng-show="storyForm.storyName.$invalid && !storyForm.storyName.$pristine" class="help-block">Story Title is required.</p>
+              </div>
+              <div class="form-group">
+                <input type="text" name="summary" value="" ng-model="storyCtrl.summary" class="form-control" placeholder="summary"/>
+              </div>
+              <div class="form-group">
+                <textarea type="text" name="content" value="" ng-model="storyCtrl.content" class="form-control" placeholder="Content"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="text" name="price" value="" ng-model="storyCtrl.price" class="form-control" placeholder="Price"/>
+              </div>
+              <div class="form-group">
+                <input type="file" name="thumbnail" ng-model="storyCtrl.thumbnail" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" name="sector" ng-model="storyCtrl.sector" value="" class="form-control" placeholder="Sector"/>
+              </div>
+              <div class="form-group">
+                <input type="text" name="country" ng-model="storyCtrl.country" value="" class="form-control" placeholder="country" />
+              </div>
+              <div class="form-group">
+                  <button type="submit" class="btn btn-info btn-block">Send</button>
+              </div>
+          </form>
+      </div>
+  </div>
+  <!---->
+  </row>
+</div>

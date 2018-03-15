@@ -1,0 +1,12 @@
+<div class="container" ng-controller="storyFeedController as storyFeedCtrl">
+  <div class="row">
+    <div class="col-md">
+      <div class="media" ng-repeat="story in storyFeedCtrl.stories">
+        <img class="mr-3" src="{{ story.thumbnail }}" alt="{{ story.title }}">
+          <div class="media-body">
+            <h5 class="mt-0">{{ story.title }}</h5>
+            {{ story.summary }}
+      </div>
+      </div>
+    </div>
+</div>
