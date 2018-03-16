@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group" ng-class="{ 'has-error' : storyForm.country.$invalid && !storyForm.country.$pristine }">
                   <label>Country</label>
-                  <select ui-select2 ng-model="story.country" data-placeholder="Add Countries" multiple="multiple">
+                  <select ng-model="story.country" data-placeholder="Add Countries">
                       <option value=""></option>
                       <option value="USA">USA</option>
                       <option value="UK">UK</option>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group" ng-class="{ 'has-error' : storyForm.sector.$invalid && !storyForm.sector.$pristine }">
                   <label>Topic</label>
-                  <select ui-select2 ng-model="story.sector" data-placeholder="Add Topics" multiple="multiple">
+                  <select ng-model="story.sector" data-placeholder="Add Topics">
                       <option value=""></option>
                       <option value="Economy">Economy</option>
                       <option value="Arts">Arts</option>

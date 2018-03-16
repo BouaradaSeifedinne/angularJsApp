@@ -1,6 +1,7 @@
 'use strict';
 newsApp.controller('storyController', ['$http', '$httpParamSerializerJQLike', function ($http, $httpParamSerializerJQLike) {
     this.addStory = function () {
+        
         var story = {
             "tags": [
                 {
