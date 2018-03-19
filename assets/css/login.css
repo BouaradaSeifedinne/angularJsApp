@@ -66,7 +66,7 @@ background: url("../images/bg.jpeg")no-repeat center center fixed ;
 s
 
   font-weight: lighter;
- font-family: 'Lato', sans-serif; 
+ font-family: 'Lato', sans-serif;
     "Helvetica Neue Light",
     "Helvetica Neue",
     Helvetica,
@@ -157,8 +157,9 @@ h1 {
   margin-left: 35px;
 }
 .roti {
-  margin-top: 80px;
-  margin-right: 55px;
+  margin-top: 88px;
+  margin-right: 168px;
+  margin-left: -51%;
 }
 input, button {
   margin: 4px;

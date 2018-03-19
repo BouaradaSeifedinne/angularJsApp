@@ -4,7 +4,7 @@
     module('newsApp').
     config(['$locationProvider', '$routeProvider', function config($locationProvider, $routeProvider){
         $locationProvider.hashPrefix('!');
-    
+
         $routeProvider.
             when('/', {
                 templateUrl: "views/home.html",
@@ -22,24 +22,32 @@
                 templateUrl: "views/user/profile.html",
                 controller : 'homeCtrl'
             }).
-             when('/story/view:id', {
-                templateUrl: "views/story/viewStoryMember.html",
+            when('/story/view:id', {
+                templateUrl: "views/story/viewStory.html",
                 controller : 'storyCtrl'
             }).
+            when('/story/add_story', {
+                templateUrl: "views/story/add_story.html",
+                controller : 'storyCtrl'
+            }).
+            when('/story/edit_story/:id', {
+                templateUrl: "views/story/edit_story.html",
+                controller: 'storyCtrl'
+            }).
             otherwise('/');
-        
+
         }])
 
     .constant('APIConfig', {
         url : 'http://127.0.0.1:3000/api'
     })
-    
 
-    .run(function($rootScope, $location,loginService){
+
+   .run(function($rootScope, $location,loginService){
         var routesPermission = ['/']; // all routes that login is required
-        // for exemple '/' ==> the home path , 'Profile' ==> userProfile 
+        // for exemple '/' ==> the home path , 'Profile' ==> userProfile
         $rootScope.$on('$routeChangeStart', function(){
-            if(routesPermission.indexOf($location.path()) !=-1 
+            if(routesPermission.indexOf($location.path()) !=-1
                 && !loginService.isLogged($location)){
                 $location.path('/login');
             }

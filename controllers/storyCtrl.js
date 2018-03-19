@@ -9,6 +9,13 @@ angular.
     	}
         var currentId = $routeParams.id;
   	    $scope.story =storyService.getStoryById($scope,currentId); //call StoryFeed Service
+		$rootScope.showHeaderFooter = true;
 
-    	$rootScope.showHeaderFooter = true;
+		$scope.saveStory = function () {
+			storyService.addStory($scope.new_story);
+		}
+
+		$scope.editStory = function () {
+			storyService.updateStory(currentId,$scope.edit, $scope.story);
+		}
     }]);
