@@ -1,0 +1,48 @@
+
+
+
+
+<div id="formlogin"  >
+    <h1 style="font-size:34px; padding-top: 5%;">Capitol intelligence News</h1>
+
+    <div id=="formloginContent">
+        <form action="" name="formLogin">
+          <div id="divFormss">
+              <div class="admin">
+                <div class="rota">
+                  <h1 style="font-size:25px; color:#052334 ;padding: 2%;">Login</h1>
+
+                  <input id="email" type="text" value="" placeholder="email" ng-model="user.email"  required />
+                  <br />
+                  <input id="password" type="password"  value="" placeholder="Password" ng-model="user.password"  required />
+                </div>
+              </div>
+              <div class="cms">
+                <div class="roti">
+                  <h1>&nbsp&nbsp&nbsp</h1>
+
+                  <button id="valid" type="button" ng-click="login(user)" > Valid! </button><br />
+                  <!-- ng-disabled="formLogin.$invalid"  -->
+
+                </div>
+              </div>
+          </div>
+        </form>
+
+    </div>
+    <div id="formloginBottom">
+    <p>{{error}}</p>
+
+       <a href="#">Register</a> | <a href="#">Forgot Password</a> | <a href="#">Help</a>
+    </div>
+</div>
+
+
+<!--
+<script type="text/javascript">
+$("#valid").click(function() {
+  $(".admin").addClass("up").delay(100).fadeOut(100);
+  $(".cms").addClass("down").delay(150).fadeOut(100);
+});
+</script>
+ -->
