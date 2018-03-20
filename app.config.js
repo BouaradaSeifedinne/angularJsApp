@@ -23,7 +23,7 @@
                 controller : 'homeCtrl'
             }).
             when('/story/view:id', {
-                templateUrl: "views/story/viewStory.html",
+                templateUrl:  "views/story/viewStory.html",
                 controller : 'storyCtrl'
             }).
             when('/story/add_story', {
@@ -40,6 +40,13 @@
 
     .constant('APIConfig', {
         url : 'http://127.0.0.1:3000/api'
+    })
+
+    .constant('StatusStory', {
+        1 : 'Draft',
+        2 : 'validation waiting',
+        3 : 'Published',
+        4 : 'Rejected'
     })
 
 

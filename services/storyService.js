@@ -2,7 +2,7 @@
 
 angular.
 	module('newsApp')
-	.factory('storyService', ['$http', '$httpParamSerializerJQLike', 'APIConfig', 'sessionService' , function ($http, $httpParamSerializerJQLike, APIConfig , sessionService) {
+	.factory('storyService', ['$http', '$httpParamSerializerJQLike', 'APIConfig', 'sessionService', 'StatusStory' , function ($http, $httpParamSerializerJQLike, APIConfig , sessionService, StatusStory) {
 		return {
 			feedStory: function (scope) {
 				var stories = [];
@@ -76,7 +76,7 @@ angular.
 						"_id": value._id,
 						"authorId": value.authorId,
 						"title": value.title,
-						"status": value.status,
+						"status": StatusStory[value.status],
 						"summary": value.summary,
 						"content": value.content,
 						"price": value.price,

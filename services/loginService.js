@@ -17,12 +17,20 @@ angular.
 				};
 
 				$http(req).then(function successCallback(response) {
-					rootScope.credentials = response.data;           
+					rootScope.credentials = response.data;
 					scope.error = "";
 					rootScope.showHeaderFooter = true;
 					sessionService.set('usrer',response.data.userId);
-
 					sessionService.set('token',response.data.token);
+
+
+          if(response.data.userId === '5ab13fc374480036f26a69b8'){
+            sessionService.set('role','reporter');
+          }else{
+            sessionService.set('role','member');
+          }
+
+          //console.log(response.data.userId);
 
         			location.path("/");
 				}, function errorCallback(response) {

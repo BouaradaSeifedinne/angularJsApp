@@ -2477,7 +2477,7 @@ tbody.collapse.show {
 .nr:empty::after {
   margin-left: 0; }
 
-.dropdown-menu {
+.dropdown-menu1 {
   position: absolute;
   top: 100%;
   left: 0;
@@ -2496,7 +2496,7 @@ tbody.collapse.show {
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem; }
 
-.om .dropdown-menu {
+.om .dropdown-menu1 {
   margin-top: 0;
   margin-bottom: 0.125rem; }
 
@@ -2515,7 +2515,7 @@ tbody.collapse.show {
 .om .nr:empty::after {
   margin-left: 0; }
 
-.on .dropdown-menu {
+.on .dropdown-menu1 {
   margin-top: 0;
   margin-left: 0.125rem; }
 
@@ -2536,7 +2536,7 @@ tbody.collapse.show {
 .on .nr::after {
   vertical-align: 0; }
 
-.oo .dropdown-menu {
+.oo .dropdown-menu1 {
   margin-top: 0;
   margin-right: 0.125rem; }
 
@@ -2597,7 +2597,7 @@ tbody.collapse.show {
     color: #6c757d;
     background-color: transparent; }
 
-.dropdown-menu.show {
+.dropdown-menu1.show {
   display: block; }
 
 .or {
@@ -3068,7 +3068,7 @@ tbody.collapse.show {
     color: #1e3948;
     background-color: #fff;
     border-color: #9da9b0 #9da9b0 #fff; }
-  .ph .dropdown-menu {
+  .ph .dropdown-menu1 {
     margin-top: -1px;
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
@@ -3154,7 +3154,7 @@ tbody.collapse.show {
   .navbar-nav .pg {
     padding-right: 0;
     padding-left: 0; }
-  .navbar-nav .dropdown-menu {
+  .navbar-nav .dropdown-menu1 {
     position: static;
     float: none; }
 
@@ -3212,7 +3212,7 @@ tbody.collapse.show {
       -webkit-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row; }
-      .pr .navbar-nav .dropdown-menu {
+      .pr .navbar-nav .dropdown-menu1 {
         position: absolute; }
       .pr .navbar-nav .ps {
         right: 0;
@@ -3232,7 +3232,7 @@ tbody.collapse.show {
           flex-basis: auto; }
     .pr .pp {
       display: none; }
-    .pr .om .dropdown-menu {
+    .pr .om .dropdown-menu1 {
       top: auto;
       bottom: 100%; } }
 
@@ -3254,7 +3254,7 @@ tbody.collapse.show {
       -webkit-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row; }
-      .pt .navbar-nav .dropdown-menu {
+      .pt .navbar-nav .dropdown-menu1 {
         position: absolute; }
       .pt .navbar-nav .ps {
         right: 0;
@@ -3274,7 +3274,7 @@ tbody.collapse.show {
           flex-basis: auto; }
     .pt .pp {
       display: none; }
-    .pt .om .dropdown-menu {
+    .pt .om .dropdown-menu1 {
       top: auto;
       bottom: 100%; } }
 
@@ -3296,7 +3296,7 @@ tbody.collapse.show {
       -webkit-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row; }
-      .pu .navbar-nav .dropdown-menu {
+      .pu .navbar-nav .dropdown-menu1 {
         position: absolute; }
       .pu .navbar-nav .ps {
         right: 0;
@@ -3316,7 +3316,7 @@ tbody.collapse.show {
           flex-basis: auto; }
     .pu .pp {
       display: none; }
-    .pu .om .dropdown-menu {
+    .pu .om .dropdown-menu1 {
       top: auto;
       bottom: 100%; } }
 
@@ -3338,7 +3338,7 @@ tbody.collapse.show {
       -webkit-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row; }
-      .pv .navbar-nav .dropdown-menu {
+      .pv .navbar-nav .dropdown-menu1 {
         position: absolute; }
       .pv .navbar-nav .ps {
         right: 0;
@@ -3358,7 +3358,7 @@ tbody.collapse.show {
           flex-basis: auto; }
     .pv .pp {
       display: none; }
-    .pv .om .dropdown-menu {
+    .pv .om .dropdown-menu1 {
       top: auto;
       bottom: 100%; } }
 
@@ -3377,7 +3377,7 @@ tbody.collapse.show {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row; }
-    .pw .navbar-nav .dropdown-menu {
+    .pw .navbar-nav .dropdown-menu1 {
       position: absolute; }
     .pw .navbar-nav .ps {
       right: 0;
@@ -3397,7 +3397,7 @@ tbody.collapse.show {
         flex-basis: auto; }
   .pw .pp {
     display: none; }
-  .pw .om .dropdown-menu {
+  .pw .om .dropdown-menu1 {
     top: auto;
     bottom: 100%; }
 
@@ -7131,10 +7131,10 @@ textarea {
     padding-right: 40px;
     padding-left: 40px; } }
 
-.dropdown-menu {
+.dropdown-menu1 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem; }
-  .dropdown-menu > li > a {
+  .dropdown-menu1 > li > a {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 20px;

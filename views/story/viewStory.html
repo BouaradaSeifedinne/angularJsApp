@@ -26,22 +26,26 @@
 												</div>
 
 
-													<div class="col-sm-9">
-														<h2 style="margin-top: 1%;"> <a href="#!/story/view{{story.id}}" class="ahref2"> {{story.title}} </a>
-															  &nbsp&nbsp
+				<div class="col-sm-9">
+				<h2 style="margin-top: 1%;"> <a href="#!/story/view{{story.id}}" class="ahref2"> {{story.title}} </a>
+						  &nbsp&nbsp
 
 
-					<span ng-if="story.status!=='Draft'">
+					<span>
+							<img ng-if="story.star >=1" src="./assets/images/article_star.png" style="width: 2%;">
+							<img ng-if="story.star >=2" src="./assets/images/article_star.png" style="width: 2%;">
+							<img ng-if="story.star >=3" src="./assets/images/article_star.png" style="width: 2%;">
+							<img ng-if="story.star >=4" src="./assets/images/article_star.png" style="width: 2%;">
+							<img ng-if="story.star >=5" src="./assets/images/article_star.png" style="width: 2%;">
+					</span>
 
+						<span ng-show="role === 'reporter'" ng-switch="story.status">
+									<span style="float:right;font-size: 14px;" ng-switch-when="Draft" class="btn btn-outline-warning btn-sm"> {{story.status}}</span>
+									<span style="float:right;font-size: 14px;" ng-switch-when="validation waiting" class="btn btn-outline-info btn-sm"> {{story.status}}</span>
+									<span style="float:right;font-size: 14px;" ng-switch-when="Published" class="btn btn-outline-success btn-sm"> {{story.status}}</span>
+									<span style="float:right;font-size: 14px;" ng-switch-when="Rejected" class="btn btn-outline-danger btn-sm"> {{story.status}}</span>
 
-																	<img src="./assets/images/article_star.png" style="width: 2%;">
-																	<img src="./assets/images/article_star.png" style="width: 2%;">
-																	<img src="./assets/images/article_star.png" style="width: 2%;">
-																	<img src="./assets/images/article_star.png" style="width: 2%;">
-																	<img src="./assets/images/article_star.png" style="width: 2%;">
-				</span>
-
-							<span ng-if="story.status!=='validate'">   <span style="float:right;font-size: 14px;" class="btn btn-outline-info btn-sm">{{story.status}}</span>  </span>
+						</span>
 														</h2>
 
 														<p style="margin-bottom: 1.25rem;color: #999;">{{story.date_last_update}} by <a href="#" class="ahref">Larry King </a>
@@ -53,12 +57,11 @@
 														<p><footer class="blockquote-footer" ng-repeat="tag in story.tags" >{{tag.key}} : {{tag.value}} </footer>
 
 														</p>
-													</div>
+						</div>
 
 
 			<div class="col-lg-12 container storyContent" style="text-align: justify;">
-				{{story.content}}{{story.content }}{{story.content }}{{story.content }}  {{story.content}}{{story.content }}{{story.content }}{{story.content }}
-					{{story.content}}{{story.content }}{{story.content }}{{story.content }}  {{story.content}}{{story.content }}{{story.content }}{{story.content }}
+				{{story.content}}
 			</div>
 
 
@@ -90,8 +93,8 @@
 
 												<br>
 
-  <div class="statProfile" > <a class="btn btn-outline-warning btn-sm btn-block" href="#!/story/edit_story/{{story._id}}"> update Story</a> </div>
-	<div class="statProfile" > <a class="btn btn-outline-success btn-sm btn-block" href="#"> Push Story</a> </div>
+  <div class="statProfile" ng-show="role === 'reporter'"> <a class="btn btn-outline-warning btn-sm btn-block" href="#!/story/edit_story/{{story._id}}"> update Story</a> </div>
+	<div class="statProfile" ng-show="role === 'reporter'"> <a class="btn btn-outline-success btn-sm btn-block" href="#"> Push Story</a> </div>
   <div class="statProfile" > <a class="btn btn-outline-primary btn-sm btn-block" href="javascript:history.go(-1)">Back to list</a></div>
 
 
