@@ -1,0 +1,100 @@
+<div style="margin-top: 1%;" id="list_of_Story" ng-controller="StoryviewCtrl as swctl" >
+
+	<div class="col-lg-12">
+
+								  <div class="container row">
+								    <div class="input-group input-group row col-11">
+								      <span class="input-group-btn">
+								        <button class="btn btn-secondary" type="button">Search !</button>
+								      </span>
+								      <input type="text" class="form-control mr-sm-2" ng-model="research" placeholder="Search for...">
+								    </div>
+								  </div>
+
+
+
+																<div class="row">
+
+																			    <div class="col-sm-9 blog-main">
+																			        	<div ng-show="loading"> loading... </div>
+
+																						<div style="margin-top: 3%; margin-left: 0%; border:1px solid #D5DCE5;"  class="row">
+																							  	<div class="col-sm-3" style="background-image: url(./assets/images/{{story.thumbnail}});  background-position: center;background-repeat: no-repeat;background-size: cover;">
+																				           <!-- <a href="#!/story/view{{story.id}}" class="ahref">
+																				              <img src="./assets/images/{{story.thumbnail}}" style="width: 100%;">
+																				            </a> -->
+																				        </div>
+
+
+																					        <div class="col-sm-9">
+																								  	<h2 style="margin-top: 1%;"> <a href="#!/story/view{{story.id}}" class="ahref2"> {{story.title}} </a>    &nbsp&nbsp
+
+
+                                                      <span ng-if="story.status!=='Draft'">
+
+
+																					                <img src="./assets/images/article_star.png" style="width: 2%;">
+																					                <img src="./assets/images/article_star.png" style="width: 2%;">
+																					                <img src="./assets/images/article_star.png" style="width: 2%;">
+																					                <img src="./assets/images/article_star.png" style="width: 2%;">
+																					                <img src="./assets/images/article_star.png" style="width: 2%;">
+                                                    </span>
+
+                                                           <span style="float:right;font-size: 14px;" class="btn btn-outline-info btn-sm">{{story.status}}</span>
+																					          </h2>
+
+																								  	<p style="margin-bottom: 1.25rem;color: #999;">{{story.date_last_update}} by <a href="#" class="ahref">Larry King </a>
+																					           <span ng-if="story.status!=='Draft'"> <span style="float:right"> 30 min Ago</span></p>  </span>
+																								  	<!-- <a href="#!/story/view{{story.id}}" class="ahref2"> <span> <p>{{story.content  | limitTo: 350}}</p>  </span> </a>-->
+																								  	<p><footer class="blockquote-footer" ng-repeat="tag in story.tags" >{{tag.key}} : {{tag.value}} </footer>
+
+																					          </p>
+																					        </div>
+
+
+                                                  <div class="col-lg-12 container storyContent" style="text-align: justify;">
+                                                    {{story.content}}{{story.content  | limitTo: 300}}
+                                                  </div>
+
+
+
+
+																						</div>
+																			    </div>
+
+
+																	        <div class="col-sm-2 offset-sm-1 blog-sidebar" ng-controller="userMetaDataCtrl">
+
+																	          <div style="margin-top: 5%;">
+
+
+																					          	<div class="theme-purchases__item" style="border-bottom: 1px solid #D5DCE5;display: flex !important;font-size: 12px;letter-spacing: -.01em;line-height: 1.5;border-left: 1px solid #D5DCE5;padding: 20px 15px;flex: 1 0 auto;text-align: center !important;font-size: 12px;color: #838E95;">
+																				                    <!--<h5 class="mb-0"><i class="bootstrap-themes-icon-cart"></i>205 </h5>
+																				                    <p> &nbsp; &nbsp;Sales </p>-->
+
+
+                                                          <span style="float:right; color: #999"> <h5>Prise : {{story.price}} N.Tff </h5></span>
+																				              </div>
+
+
+																	         </div>
+                                           <div class="statProfile" ><strong><span class="ahref"> Author : Larry King</span></strong></div>
+                                           <div class="statProfile" ><strong><span class="ahref"> View : 1.9 k </span></strong></div>
+                                           <div class="statProfile" ><strong><span class="ahref"> Purchase : 200 </span></strong></div>
+
+
+																								<br>
+
+                                              <div class="statProfile" > <a class="btn btn-outline-primary btn-sm btn-block" href="javascript:history.go(-1)">Back to list</a></div>
+                                              <div class="statProfile" > <a class="btn btn-outline-warning btn-sm btn-block" href="#"> update Story</a> </div>
+                                              <div class="statProfile" > <a class="btn btn-outline-success btn-sm btn-block" href="#"> Push Story</a> </div>
+
+
+
+																	          </div>
+
+														        </div><!-- /.blog-sidebar row -->
+
+      </div>
+
+	</div>

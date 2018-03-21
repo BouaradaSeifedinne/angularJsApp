@@ -1,0 +1,73 @@
+<!--<form class="fp-userDetail">
+  <!--<fieldset disabled>
+
+  <!-- Form Name -->
+  <!--<legend class="legend">  <h1>{{story.title}}</h1>
+
+  <div class="col-lg-12 row">
+
+    <div class="col-lg-8">
+       <p style="margin-bottom: 1.25rem;color: #999;">{{story.date_last_update}} by <a href="#" class="ahref">Larry King </a>
+    </div>
+
+    <div class="col-lg-4" style="text-align: right;">
+      <img src="./assets/images/article_star.png" style="width: 10%;">
+      <img src="./assets/images/article_star.png" style="width: 10%;">
+      <img src="./assets/images/article_star.png" style="width: 10%;">
+      <img src="./assets/images/article_star.png" style="width: 10%;">
+      <img src="./assets/images/article_star.png" style="width: 10%;">
+    </div>
+  </div>
+
+  <div class="col-lg-12 container" >
+    <img src="./assets/images/thumbnail.png" style="text-" >
+  </div>
+
+  <div class="col-lg-12 container storyContent" >
+    {{story.content}}
+  </div>
+
+
+
+
+
+
+</fieldset>
+</form>-->
+
+
+<div style="margin-top: 3%; margin-left: 0%; border:1px solid #D5DCE5;"  class="row" >
+
+      <div class="col-sm-3" style="background-image: url(./assets/images/{{story.thumbnail}});  background-position: center;background-repeat: no-repeat;background-size: cover;">
+       <!-- <a href="#!/story/view{{story.id}}" class="ahref">
+          <img src="./assets/images/{{story.thumbnail}}" style="width: 100%;">
+        </a> -->
+    </div>
+
+
+      <div class="col-sm-9">
+        <h2 style="margin-top: 1%;"> <a href="#!/story/view{{story.id}}" class="ahref2"> {{story.title}} </a>    &nbsp&nbsp
+
+
+          <span ng-if="story.status!=='Draft'">
+
+
+              <img src="./assets/images/article_star.png" style="width: 2%;">
+              <img src="./assets/images/article_star.png" style="width: 2%;">
+              <img src="./assets/images/article_star.png" style="width: 2%;">
+              <img src="./assets/images/article_star.png" style="width: 2%;">
+              <img src="./assets/images/article_star.png" style="width: 2%;">
+        </span>
+
+               <span style="float:right;font-size: 14px;" class="btn btn-outline-info btn-sm">{{story.status}}</span>
+        </h2>
+
+        <p style="margin-bottom: 1.25rem;color: #999;">{{story.date_last_update}} by <a href="#" class="ahref">Larry King </a>
+         <span ng-if="story.status!=='Draft'"> <span style="float:right"> 30 min Ago</span></p>  </span>
+        <a href="#!/story/view{{story.id}}" class="ahref2"> <span> <p>{{story.content  | limitTo: 350}}</p>  </span> </a>
+        <p><footer class="blockquote-footer" ng-repeat="tag in story.tags" >{{tag.key}} : {{tag.value}} </footer>
+          <span style="float:right; color: #999"> <h5>{{story.price}} N.T </h5></span>
+        </p>
+      </div>
+
+</div>

@@ -5,26 +5,66 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    
+    <!-- Fonts Google -->
+    <!--   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'> -->
+   <!--  <link href='assets/fonts/Lato.ttf' rel='stylesheet' type='text/css'> -->
+
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-      
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!-- fontawesome CSS -->
+    <link rel="stylesheet" href="assets/css/all.css">   
+
+
+    <title>Capitol intelligence News :: Home</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header clearfix" ng-include="'partials/header.html'" ng-show="showHeaderFooter"> </div>
+      <div class="container" ng-view> </div>
+      <footer class="footer1" ng-include="'partials/footer.html'"  ng-show="showHeaderFooter" style="margin-top: 1%;" ></footer>
+    </div>
+  </body>
+
+  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet"  href="assets/css/css.css">
+  
+    <!-- jquery -->
+    <script type="text/javascript" src="assets/js/jquery-3.1.1.slim.min.js"></script>
+   
+    
+    <!-- tether -->
+    <script type="text/javascript" src="assets/js/tether.min.js"></script>  
+
+    <!-- bootstrap -->
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>  
+    
     <!-- Angular Js -->
-    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular.min.js"></script>
       
     <!-- Angular js route -->  
-    <script type="text/javascript" src="bower_components/angular/extras/angular-route.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular-route.min.js"></script>
     
     <!-- Main app module-->
     <script type="text/javascript" src="app.module.js"></script>
       
     <!-- Main app config-->
     <script type="text/javascript" src="app.config.js"></script>
+  
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-      
-    <div ng-view></div>
+    <!-- Controllers -->
+    <script type="text/javascript" src="controllers/loginCtrl.js"></script>
+    <script type="text/javascript" src="controllers/homeCtrl.js"></script>
+    <script type="text/javascript" src="controllers/storyCtrl.js"></script>
     
-  </body>
+    <!-- Directives -->
+    <script type="text/javascript" src="directives/loginDirective.js"></script>
+
+     <!-- Services -->
+    <script type="text/javascript" src="services/loginService.js"></script>
+    <script type="text/javascript" src="services/sessionService.js"></script>
+    <script type="text/javascript" src="services/storyService.js"></script>
+    
+
 </html>

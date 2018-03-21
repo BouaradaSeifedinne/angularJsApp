@@ -1,0 +1,74 @@
+
+<div ng-app="newsApp" ng-controller="storyCtrl">
+            <form name="storyForm">
+                <fieldset>
+                <div class="form-group">
+                  <input type="hidden" name="authorId" ng-model="authorId" class="form-control" value="5aa3148a268d9b158e3a068c" />
+                </div>
+                <div class="form-group">
+                  <input type="hidden" name="status" ng-model="status" class="form-control" value="1" />
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : storyForm.title.$invalid && !storyForm.title.$pristine }">
+                  <input type="text" name="title" value="" ng-model="new_story.title" class="form-control" placeholder="Title"/>
+                  <p ng-show="storyForm.title.$error.minlength" class="help-block">Content is too short.</p>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : storyForm.summary.$invalid && !storyForm.summary.$pristine }">
+                  <input type="text" name="summary" value="" ng-model="new_story.summary" class="form-control" placeholder="summary"/>
+                  <p ng-show="storyForm.summary.$error.minlength" class="help-block">Content is too short.</p>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : storyForm.content.$invalid && !storyForm.content.$pristine }">
+                  <textarea type="text" name="content" value="" ng-model="new_story.content" class="form-control" placeholder="Content"></textarea>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : storyForm.price.$invalid && !storyForm.price.$pristine }">
+                  <input type="text" name="price" value="" ng-model="new_story.price" class="form-control" placeholder="Price"/>
+                </div>
+                <div class="form-group">
+                  <input type="file" name="thumb" id="thumb" ng-model="new_story.thumb" class="form-control" onchange="readURL(this);" />
+                </div>
+                <div class="form-group">
+                  <input type="text" id="thumb2" name="thumb2" class="form-control"/>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : storyForm.country.$invalid && !storyForm.country.$pristine }">
+                  <label>Country</label>
+                  <select ng-model="new_story.country" data-placeholder="Add Countries">
+                      <option value=""></option>
+                      <option value="USA">USA</option>
+                      <option value="UK">UK</option>
+                      <option value="France">France</option>
+                  </select>
+                  <p ng-show="storyForm.country.$invalid && !storyForm.country.$pristine" class="help-block">Enter a valid tag.</p>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : storyForm.sector.$invalid && !storyForm.sector.$pristine }">
+                  <label>Topic</label>
+                  <select ng-model="new_story.sector" data-placeholder="Add Topics">
+                      <option value=""></option>
+                      <option value="Economy">Economy</option>
+                      <option value="Arts">Arts</option>
+                      <option value="Social">Social</option>
+                  </select>
+                  <p ng-show="storyForm.sector.$invalid && !storyForm.sector.$pristine" class="help-block">Enter a valid tag.</p>
+                </div>
+                <div class="form-group">
+                  <!--button type="button" class="btn btn-default" ng-click="new_story.preview()">Preview</button-->
+                  <!--button type="button" class="btn btn-info" ng-disabled="storyForm.$invalid">Save</button-->
+                  <input type="button" class="btn btn-primary" ng-disabled="storyForm.$invalid" ng-click="saveStory(new_story)" value="Submit">
+                </div>
+                </fieldset>
+            </form>
+   </div> 
+   <script>
+   function readURL(input) {
+					if (input.files && input.files[0]) {
+						var reader = new FileReader();
+						reader.onload = function (e) {
+							document.getElementById('thumb2').value =  e.target.result;
+						}
+            reader.readAsDataURL(input.files[0]);
+            console.log('test');
+					}
+				}
+
+   </script> 
+   
+    
+  

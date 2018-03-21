@@ -1,0 +1,44 @@
+
+
+
+<div class="container fp-userDetail"  ng-controller="StoryviewCtrl as swctl">
+    <div class="row">
+        <div class="col-md-10 ">
+            <div class="">
+            	<div class="row">
+            		<div class="col-lg-12">
+            	      	<div ng-include="'views/story/view.html'"> </div>
+            	    </div>
+            	</div>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="row">
+                <div></div>
+            </div>
+
+            <img src="assets/images/user1.jpg" class="img-responsive img-thumbnail">
+
+
+            <div class="statProfile" ><strong><span class="ahref"> Author : Larry King</span></strong></div>
+            <div class="statProfile" ><strong><span class="ahref"> Wiew : 1.9 k </span></strong></div>
+            <div class="statProfile" ><strong><span class="ahref"> Purchase : 200 </span></strong></div>
+            <div class="statProfile" ><strong><span class="ahref"> Price : {{story.price | currency:" N.T "}}</span></strong></div>
+            <br><br>
+
+            <div class="statProfile" > <a class="btn btn-outline-primary" href="javascript:history.go(-1)">Back to list</a></div>
+            <div class="statProfile" > <a class="btn btn-outline-warning" href="#"> update Story</a> </div>
+            <div class="statProfile" > <a class="btn btn-outline-success" href="#"> Push Story</a> </div>
+
+
+
+
+
+        </div>
+
+
+
+
+    </div>
+</div>
