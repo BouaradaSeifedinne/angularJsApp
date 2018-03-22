@@ -31,7 +31,7 @@ angular.
 							"_id": value._id,
 							"authorId": value.authorId,
 							"title": value.title,
-							"status": value.status,
+							"status": StatusStory[value.status],
 							"summary": value.summary,
 							"price": value.price,
 							"thumbnail": value.thumbnail,
@@ -95,7 +95,7 @@ angular.
 				return item;
 			},
 
-			addStory: function (new_story) {
+			/*addStory: function (new_story) {
 
 				console.log(sessionService.get('token'));
 
@@ -135,9 +135,53 @@ angular.
 				}, function errorCallback(response) {
 					console.log(response.data);
 				});
+			},*/
+
+			addStory: function (new_story,location,scope) {
+				var thumbnail = document.getElementById('thumb2').value;
+				var story = {
+					"tags": [
+						{
+							"key": "Topic",
+							"value": new_story.topicsTag,
+						},
+						{
+							"key": "Country",
+							"value": new_story.countriesTag,
+						}
+					],
+					"dateCreationStory": Date.now(),
+					"dateLastUpdate": Date.now(),
+					"authorId": "5aa3148a268d9b158e3a068c",
+					"editorId": "5aa3148a268d9b158e3a068c",
+					"title": new_story.title,
+					"status": "1",
+					"content": new_story.content,
+					"summary": new_story.summary,
+					"price": new_story.price,
+					"thumbnail": thumbnail,
+				};
+				var req = {
+					method: 'POST',
+					url: 'http://127.0.0.1:3000/api/story/add/',
+					data: $httpParamSerializerJQLike(story),
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+				};
+				$http(req).then(function successCallback(response) {
+					// /console.log(response.data);
+					scope.taskStatus = true;
+					scope.taskMsg = "success add Story ";
+					location.path("/");
+				}, function errorCallback(response) {
+					console.log(response);
+					scope.taskStatus = false;
+					scope.taskMsg = "error to add Story !";
+				});
 			},
 
-
+			/*
 			updateStory: function (id, new_story,story) {
 				var title = new_story.title ? new_story.title : story.title;
 				var sector =new_story.sector ? new_story.sector: story.sector;
@@ -183,6 +227,60 @@ angular.
 				}, function errorCallback(response) {
 					console.log(response.data);
 				});
+			}*/
+
+			updateStory: function (id, new_story,story) {
+				var title = new_story.title ? new_story.title : story.title;
+				var sector =new_story.sector ? new_story.sector: story.sector;
+				var country = new_story.country ? new_story.country: story.country;
+				var content = new_story.content ? new_story.content: story.content;
+				var summary = new_story.summary ? new_story.summary: story.summary;
+				var price = new_story.price ? new_story.price: story.price;
+				var thumbnail = document.getElementById('thumb2').value;
+
+				console.log(thumbnail);
+				var story = {
+					"tags": [
+						{
+							"key": "Topic",
+							"value": sector,
+						},
+						{
+							"key": "Country",
+							"value": country,
+						}
+					],
+					"dateCreationStory":story.dateCreationStory,
+					"dateLastUpdate": Date.now(),
+					"authorId": "5aa3148a268d9b158e3a068c",
+					"editorId": "5aa3148a268d9b158e3a068c",
+					"title": title,
+					"status": "1",
+					"content": content,
+					"summary": summary,
+					"price": price,
+					"thumbnail": thumbnail,
+					"_id": id
+				};
+
+				var url = 'http://127.0.0.1:3000/api/story/update/' + id;
+				var req = {
+					method: 'PUT',
+					url: url,
+					data: $httpParamSerializerJQLike(story),
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded',
+
+					},
+				};
+				$http(req).then(function successCallback(response) {
+					console.log(response.data);
+				}, function errorCallback(response) {
+					console.log(response.data);
+				});
+			},
+			deleteStory: function (id) {
+
 			}
 
 

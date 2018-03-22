@@ -19,7 +19,13 @@
 
 		<div class="row">
 
-		    <div class="{{role === 'reporter' ? 'col-sm-9 blog-main' : 'col-sm-12 blog-main'}} " >
+		    <div class="{{role === 'reporter' ? 'col-sm-9 blog-main' : 'col-sm-9 blog-main'}} " >
+
+          <div class="{{role === 'reporter' ? 'col-sm-9 blog-main' : 'col-sm-12 blog-main'}}  {{taskStatus === true ? 'bg-success' : 'bg-danger'}}  text-white" ng-show="taskStatus" style="text-align: center;padding: 1%;margin: 2%;">
+            {{taskMsg}}
+          </div>
+
+
 					<div style="margin-top: 3%; margin-left: 0%; border:1px solid #D5DCE5;"  class="row" ng-repeat="story in stories | filter:{content : research}">
 
 
@@ -46,7 +52,27 @@
 				          <span style="float:right"> 30 min Ago</span></p>
 							  	<a href="#!/story/view{{story._id}}" class="ahref2"> <span> <p>{{story.summary  | limitTo: 350}}</p>  </span> </a>
 							  	<p><footer class="blockquote-footer" ng-repeat="tag in story.tags" >{{tag.key}} : {{tag.value}} </footer>
-							      <span style="float:right; color: #999"> <h5>{{story.price}} N.T </h5></span>
+
+
+                    <div class="row">
+                      <div class="col-sm-6"></div>
+                      <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-5"><h5>{{story.price}} N.T </h5></div>
+                            <div class="col-sm-6">
+                                <p ng-show="role === 'reporter'" ng-switch="story.status">
+                                   <span style="font-size: 14px;" ng-switch-when="Draft" class="btn btn-outline-warning"> {{story.status}}</span>
+                                   <span style="font-size: 14px;" ng-switch-when="validation waiting" class="btn btn-outline-info"> {{story.status}}</span>
+                                   <span style="font-size: 14px;" ng-switch-when="Published" class="btn btn-outline-success"> {{story.status}}</span>
+                                   <span style="font-size: 14px;" ng-switch-when="Rejected" class="btn btn-outline-danger"> {{story.status}}</span>
+
+                               </p>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+
 				          </p>
 				        </div>
 
@@ -56,9 +82,9 @@
 
 		    <!-- ng-controller="userMetaDataCtrl" -->
 
-        <div class="col-sm-2 offset-sm-1 blog-sidebar" ng-show="role === 'reporter'" >
+        <div class="col-sm-2 offset-sm-1 blog-sidebar"  >
 
-          <div style="margin-top: 5%;">
+          <div style="margin-top: 5%;" ng-show="role === 'reporter'">
               	<div class="theme-purchases__item" style="display: flex !important;font-size: 12px;letter-spacing: -.01em;line-height: 1.5;padding: 20px 15px;flex: 1 0 auto;text-align: center !important;font-size: 12px;color: #838E95;">
 	                    <span ng-if="role == 'reporter'" > <h5 class="mb-0" > <i class="bootstrap-themes-icon-cart"></i>210</h5>Story purchased </span>
                       <span ng-if="role != 'reporter'"> <h5 class="mb-0" > <i class="bootstrap-themes-icon-cart"></i>10</h5> Purchases </span>
@@ -101,6 +127,33 @@
  -->
 
   <div class="statProfile" > <a class="btn btn-outline-success btn-sm btn-block" href="#!/story/add_story" ng-show="role === 'reporter'"> Add story </a> </div>
+
+  <article class="facet"  ng-if="role === 'member'">
+    <div class="-head">
+        <span class="-name">Get User Tag's and dsplay</span> <i class="osh-font-minus -toggle"></i>
+    </div>
+
+    <div class="-content">
+      <form class="facet-form -facet" >
+        <div class="facet-el">
+            <div class="facet-link" data-facetvalue="50" >
+                <i class="osh-font-checkbox -checkbox-toggle"></i>
+                <input type="checkbox" name="display_size[0.0]" value="0.0">
+                <span class="cnv-name"> 0.0 </span><span class="cnv-items">(50)</span>
+            </div>
+         </div>
+         <div class="facet-el">
+             <div class="facet-link" data-facetvalue="50" >
+                 <i class="osh-font-checkbox -checkbox-toggle"></i>
+                 <input type="checkbox" name="display_size[0.0]" value="0.0">
+                 <span class="cnv-name"> 0.0 </span><span class="cnv-items">(50)</span>
+             </div>
+          </div>
+      </form>
+    </div>
+
+  </article>
+
 
 
 

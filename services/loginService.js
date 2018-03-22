@@ -45,6 +45,29 @@ angular.
 	    		location.path("/login");
 	    	},
 
+        getUserCred: function (){
+          var req = {
+    					method: 'GET',
+    					url: APIConfig.url + '/users/profile/',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              'Authorization' : 'Bearer ' + sessionService.get('token') }
+    				};
+          $http(req).then(function successCallback(response) {
+                console.log(response);
+
+    				}, function errorCallback(response) {
+
+                console.log(response,'error :');
+                //sessionService.destroy('usrer');
+    		    		//sessionService.destroy('token');
+    		    		//location.path("/login");
+    				});
+    				/*** end Func ***/
+
+
+	    	},
+
 	    	isLogged:function(location){
 
 				// verification a partir des var session local pas de session coté serveur

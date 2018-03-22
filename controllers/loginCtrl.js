@@ -9,4 +9,6 @@ angular.
     		loginService.login(user,$scope,$rootScope,$location); //call login serv
 			console.log($rootScope);
     	}
+
+
     });

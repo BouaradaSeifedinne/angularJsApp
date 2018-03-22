@@ -134,10 +134,9 @@ font-family: 'Lato', sans-serif;
   color: #838E95;
   padding-top: 15px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #D5DCE5;
+  /*border-bottom: 1px solid #D5DCE5;*/
   text-align: center;
 
 }
 
 /*end form profile */
-

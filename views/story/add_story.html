@@ -7,13 +7,6 @@
             	<div class="row">
             		<div class="col-lg-12">
 
-
-
-
-
-
-
-
   <fieldset>
 
   <!-- Form Name -->
@@ -24,8 +17,6 @@
   <input type="hidden" name="status" ng-model="status" class="form-control" value="1" />
 
   <!-- Text input-->
-
-
 
 
 
@@ -66,6 +57,21 @@
 
 
 
+ <div class="form-group row">
+   <label for="inputEmail3" class="col-sm-3 col-form-label">Thumbnail</label>
+   <div class="col-sm-6" ng-class="{ 'has-error' : storyForm.thumbnail.$invalid && !storyForm.thumbnail.$pristine }">
+    <!-- <input type="text" class="form-control input-md" name="thumbnail" placeholder="thumbnail" ng-model="new_story.thumbnail"> -->
+
+
+     <input type="file" name="thumb" id="thumb" ng-model="new_story.thumb" class="form-control input-md" onchange="readURL(this);" />
+     <input type="hidden" id="thumb2" name="thumb2" class="form-control input-md" />
+
+   </div>
+ </div>
+
+
+
+<!--
 
 <div class="form-group row">
   <label for="inputEmail3" class="col-sm-3 col-form-label">Thumbnail</label>
@@ -74,7 +80,7 @@
   </div>
 </div>
 
-
+-->
 
 
 <div class="form-group row">
@@ -95,18 +101,14 @@
   <label for="inputEmail3" class="col-sm-3 col-form-label">Sector</label>
   <div class="col-sm-6" ng-class="{ 'has-error' : storyForm.sector.$invalid && !storyForm.sector.$pristine }">
     <select ng-model="story.sector"  class="form-control"  data-placeholder="Add sector">
-        <option value=""></option>
-        <option value="USA" selected>USA</option>
-        <option value="UK">UK</option>
-        <option value="France">France</option>
+      <option value=""></option>
+      <option value="Economy">Economy</option>
+      <option value="Arts">Arts</option>
+      <option value="Social">Social</option>
     </select>
       <p ng-show="storyForm.sector.$invalid && !storyForm.sector.$pristine" class="help-block">Enter a valid tag.</p>
   </div>
 </div>
-
-
-
-
 
 
 <div class="form-group">
@@ -118,7 +120,19 @@
 
 </fieldset>
 
+<script>
+   function readURL(input) {
+					if (input.files && input.files[0]) {
+						var reader = new FileReader();
+						reader.onload = function (e) {
+							document.getElementById('thumb2').value =  e.target.result;
+						}
+            reader.readAsDataURL(input.files[0]);
+            console.log('test');
+					}
+				}
 
+   </script>
 
 
 
