@@ -49,7 +49,6 @@
         4 : 'Rejected'
     })
 
-
    .run(function($rootScope, $location,loginService){
         var routesPermission = ['/']; // all routes that login is required
         // for exemple '/' ==> the home path , 'Profile' ==> userProfile

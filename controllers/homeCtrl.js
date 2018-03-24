@@ -8,12 +8,20 @@ angular.
     		loginService.logout($location);
     	}
 
-      $rootScope.user = loginService.getUserCred();
-
-
+      //loginService.getUserCred($rootScope);
+      $rootScope.userCred = loginService.getUserCred($rootScope,$location); //call StoryFeed Service
     	$scope.Storys = storyService.feedStory($scope); //call StoryFeed Service
-      console.log($scope.Storys ,' storys');
       $rootScope.role=  sessionStorage.getItem('role');
-
     	$rootScope.showHeaderFooter = true;
+      
+
+      $scope.FiltersByStatus = function (id_Filter) {
+        if(id_Filter === "All") $scope.stories = $scope.Storys;
+        else $scope.stories = storyService.FiltersByStatus($scope.Storys,id_Filter);
+      };
+
+      console.log($scope);
+
+      //console.log($scope,' Root scope');
+
     }]);

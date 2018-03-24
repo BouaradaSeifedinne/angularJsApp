@@ -23,13 +23,13 @@ angular.
 					sessionService.set('usrer',response.data.userId);
 					sessionService.set('token',response.data.token);
 
-
+/*
           if(response.data.userId === '5ab13fc374480036f26a69b8'){
             sessionService.set('role','reporter');
           }else{
             sessionService.set('role','member');
           }
-
+*/
           //console.log(response.data.userId);
 
         			location.path("/");
@@ -41,32 +41,70 @@ angular.
 
 	    	logout: function (location){
 	    		sessionService.destroy('usrer');
-	    		sessionService.destroy('token');
+					sessionService.destroy('token');
+					console.log("logout");
 	    		location.path("/login");
 	    	},
 
-        getUserCred: function (){
+        getUserCred: function (rootScope,location){
+          var item = {};
           var req = {
     					method: 'GET',
     					url: APIConfig.url + '/users/profile/',
               headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-              'Authorization' : 'Bearer ' + sessionService.get('token') }
+                'Authorization' : 'Bearer ' + sessionService.get('token')
+             }
     				};
           $http(req).then(function successCallback(response) {
-                console.log(response);
+            //  UserC  = response.data;
+              item.userFirstName = response.data.userFirstName;
+              item.userLastName = response.data.userLastName;
+              item.userEmail = response.data.userEmail;
+              item.userLogin = response.data.userLogin;
+              item.userStatus = response.data.userStatus;
+              item._id = response.data._id;
+              item.role = response.data.option[0].value;
+							item.tags = response.data.tags;
 
-    				}, function errorCallback(response) {
-
+              console.log(response.data);
+            }, function errorCallback(response) {
                 console.log(response,'error :');
-                //sessionService.destroy('usrer');
-    		    		//sessionService.destroy('token');
-    		    		//location.path("/login");
+                sessionService.destroy('usrer');
+    		    		sessionService.destroy('token');
+    		    		location.path("/login");
     				});
     				/*** end Func ***/
 
-
+            //rootScope.userCred = UserC;
+              return   item;
 	    	},
+
+        getUserCred1: function (rootScope){
+          var item = [];
+          var req = {
+              method: 'GET',
+              url: APIConfig.url + '/users/profile/',
+              headers: {
+                'Authorization' : 'Bearer ' + sessionService.get('token')
+             }
+            };
+          $http(req).then(function successCallback(response) {
+            //  UserC  = response.data;
+              rootScope.UserC = response.data;
+              item.push(response.data);
+            }, function errorCallback(response) {
+                console.log(response,'error :');
+                sessionService.destroy('usrer');
+                sessionService.destroy('token');
+                location.path("/login");
+            });
+            /*** end Func ***/
+
+            //rootScope.userCred = UserC;
+              return   item;
+        },
+
+
 
 	    	isLogged:function(location){
 

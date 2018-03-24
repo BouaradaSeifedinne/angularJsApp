@@ -7,8 +7,5 @@ angular.
     	$rootScope.showHeaderFooter = false;
     	$scope.login = function(user){
     		loginService.login(user,$scope,$rootScope,$location); //call login serv
-			console.log($rootScope);
-    	}
-
-
+		}
     });

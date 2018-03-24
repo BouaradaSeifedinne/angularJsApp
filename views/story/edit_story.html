@@ -1,163 +1,119 @@
-
-<div class="container fp-userDetail"  ng-controller="storyCtrl">
-<form class="fp-userDetail" name="storyForm">
+<div class="container fp-userDetail" ng-controller="storyCtrl">
+  <form class="fp-userDetail" name="storyForm">
     <div class="row">
-        <div class="col-md-10 ">
-            <div class="">
-            	<div class="row">
-            		<div class="col-lg-12">
-
-
-
-
-
-
-
-
-  <fieldset>
-
-  <!-- Form Name -->
-  <legend class="legend">Edit Story {{ story.title }}</legend>
-
-
-  <input type="hidden" name="authorId" ng-model="authorId" class="form-control" value="5aa3148a268d9b158e3a068c" />
-    <input type="hidden" name="_id" ng-model="_id" class="form-control" value="story._id" />
-
-  <!-- Text input-->
-
-
-
-
-
-
-<div class="form-group row">
-  <label for="inputEmail3" class="col-sm-3 col-form-label">Title</label>
-  <div class="col-sm-6" ng-class="{ 'has-error' : storyForm.title.$invalid && !storyForm.title.$pristine }">
-    <input type="text" name="title" ng-value="story.title" class="form-control input-md" ng-model="edit.title" placeholder="Title"/>
-    <p ng-show="storyForm.title.$error.minlength" class="help-block">Content is too short.</p>
-  </div>
-</div>
-
-
-
-<div class="form-group row">
-  <label for="inputEmail3" class="col-sm-3 col-form-label">Summary</label>
-  <div class="col-sm-6" ng-class="{ 'has-error' : storyForm.summary.$invalid && !storyForm.summary.$pristine }">
-    <input type="text" name="summary" ng-value="story.summary"  ng-model="edit.summary" class="form-control input-md" placeholder="summary"/>
-    <p ng-show="storyForm.summary.$error.minlength" class="help-block">Content is too short.</p>
-  </div>
-</div>
-
-
-<div class="form-group row">
-  <label for="inputEmail3" class="col-sm-3 col-form-label">Content</label>
-  <div class="col-sm-6" ng-class="{ 'has-error' : storyForm.content.$invalid && !storyForm.content.$pristine }">
-       <textarea type="text" name="content" ng-value="story.content" ng-model="edit.content" class="form-control input-md" placeholder="Content"></textarea>
-  </div>
-</div>
-
-
-<div class="form-group row">
-  <label for="inputEmail3" class="col-sm-3 col-form-label">Price</label>
-  <div class="col-sm-6" ng-class="{ 'has-error' : storyForm.price.$invalid && !storyForm.price.$pristine }">
-    <input type="text" name="price" ng-value="story.price" ng-model="edit.price" class="form-control input-md" placeholder="Price"/>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label for="inputEmail3" class="col-sm-3 col-form-label">Thumbnail</label>
-  <div class="col-sm-6" ng-class="{ 'has-error' : storyForm.thumbnail.$invalid && !storyForm.thumbnail.$pristine }">
-    <input type="file" name="thumbnail" ng-model="edit.thumbnail" class="form-control" onchange="readURL(this)">
-    <input type="hidden" name="thumb2" id="thumb2">
-    <img src="edit.thumbnail" id="img">
-  </div>
-</div>
-
-
-<div class="form-group row">
-  <label for="inputEmail3" class="col-sm-3 col-form-label">Country</label>
-  <div class="col-sm-6" ng-class="{ 'has-error' : storyForm.country.$invalid && !storyForm.country.$pristine }">
-    <select  ng-model="edit.country" class="form-control" data-placeholder="Add Countries" >
-        <option value=""></option>
-        <option value="USA">USA</option>
-        <option value="UK">UK</option>
-        <option value="France">France</option>
-    </select>
-      <p ng-show="storyForm.country.$invalid && !storyForm.country.$pristine" class="help-block">Enter a valid tag.</p>
-  </div>
-</div>
-
-<div class="form-group row">
-  <label for="inputEmail3" class="col-sm-3 col-form-label">Sector</label>
-  <div class="col-sm-6" ng-class="{ 'has-error' : storyForm.sector.$invalid && !storyForm.sector.$pristine }">
-    <select  ng-model="edit.sector"  class="form-control" data-placeholder="Add Topics">
-        <option value=""></option>
-        <option value="Economy">Economy</option>
-        <option value="Arts">Arts</option>
-        <option value="Social">Social</option>
-    </select>
-      <p ng-show="storyForm.sector.$invalid && !storyForm.sector.$pristine" class="help-block">Enter a valid tag.</p>
-  </div>
-</div>
-
-
-
-
-
-
-<div class="form-group">
-  <!--button type="button" class="btn btn-default" ng-click="new_story.preview()">Preview</button-->
-  <!--button type="button" class="btn btn-info" ng-disabled="storyForm.$invalid">Save</button-->
-
-</div>
-
-
-</fieldset>
-
-
-
-<script>
-   function readURL(input) {
-          if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              document.getElementById('thumb2').value =  e.target.result;
-            }
-            reader.readAsDataURL(input.files[0]);
-            console.log('test');
-          }
-        }
-
-   </script>
-
-
-
-
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="col-md-2">
-<div class="row">
-<div><br><br></div>
-</div>
-
-<!--button type="button" class="btn btn-default" ng-click="new_story.preview()">Preview</button-->
-<!--button type="button" class="btn btn-info" ng-disabled="storyForm.$invalid">Save</button-->
-
-<div class="statProfile" > <a class="btn btn-outline-primary btn-sm btn-block" ng-disabled="storyForm.$invalid" ng-click="editStory(new_story)" > Submit edit</a> </div>
-<div class="statProfile" > <a class="btn btn-outline-success btn-sm btn-block" href=""> Push Story</a> </div>
-<div class="statProfile" > <a class="btn btn-outline-primary btn-sm btn-block" href="javascript:history.go(-1)">Back to list</a></div>
-
-
-
-</div>
-
-
-
-
-</div>
-</form>
+      <div class="col-md-10 ">
+        <div class="">
+          <div class="row">
+            <div class="col-lg-12">
+              <fieldset>
+                <!-- Form Name -->
+                <legend class="legend">Edit Story {{ story.title }}</legend>
+                <input type="hidden" name="authorId" ng-model="authorId" class="form-control" value="5aa3148a268d9b158e3a068c" />
+                <input type="hidden" name="_id" ng-model="_id" class="form-control" value="story._id" />
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-3 col-form-label">Title</label>
+                  <div class="col-sm-9" ng-class="{ 'has-error' : storyForm.title.$invalid && !storyForm.title.$pristine }">
+                    <input type="text" name="title" ng-value="story.title" class="form-control input-md" ng-model="edit.title" placeholder="Title"
+                    />
+                    <p ng-show="storyForm.title.$error.minlength" class="help-block">Content is too short.</p>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-3 col-form-label">Summary</label>
+                  <div class="col-sm-9" ng-class="{ 'has-error' : storyForm.summary.$invalid && !storyForm.summary.$pristine }">
+                    <textarea class="form-control input-md" name="summary" placeholder="summary" ng-model="edit.summary"></textarea>
+                    <p ng-show="storyForm.summary.$error.minlength" class="help-block">Content is too short.</p>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-3 col-form-label">Content</label>
+                  <div class="col-sm-9" ng-class="{ 'has-error' : storyForm.content.$invalid && !storyForm.content.$pristine }">
+                    <textarea type="text" id="editor1" name="content" ng-value="story.content" ng-model="edit.content" class="form-control input-md" placeholder="Content"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-3 col-form-label">Price</label>
+                  <div class="col-sm-2" ng-class="{ 'has-error' : storyForm.price.$invalid && !storyForm.price.$pristine }">
+                    <input type="text" name="price" ng-value="story.price" ng-model="edit.price" class="form-control input-md" placeholder="Price"
+                    />
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-3 col-form-label">Thumbnail</label>
+                  <div class="col-sm-9" ng-class="{ 'has-error' : storyForm.thumbnail.$invalid && !storyForm.thumbnail.$pristine }">
+                    <input type="file" name="thumbnail" ng-model="edit.thumbnail" class="form-control" onchange="readURL(this)">
+                    <input type="hidden" name="thumb2" id="thumb2">
+                    <img src="edit.thumbnail" id="img">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-3 col-form-label">Country</label>
+                  <div class="col-sm-9" ng-class="{ 'has-error' : storyForm.country.$invalid && !storyForm.country.$pristine }">
+                    <select id="select2-country" ng-model="story.country" class="form-control" data-placeholder="Add Countries" multiple="multiple" ui-select2>
+                      <option value=""></option>
+                      <option value="USA">USA</option>
+                      <option value="UK">UK</option>
+                      <option value="France">France</option>
+                    </select>
+                    <p ng-show="storyForm.country.$invalid && !storyForm.country.$pristine" class="help-block">Enter a valid tag.</p>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-3 col-form-label">Sector</label>
+                  <div class="col-sm-9" ng-class="{ 'has-error' : storyForm.sector.$invalid && !storyForm.sector.$pristine }">
+                    <select id="select2-sector" ng-model="story.sector" class="form-control" data-placeholder="Add sector" multiple="multiple" ui-select2>
+                      <option value=""></option>
+                      <option value="Economy">Economy</option>
+                      <option value="Arts">Arts</option>
+                      <option value="Social">Social</option>
+                    </select>
+                    <p ng-show="storyForm.sector.$invalid && !storyForm.sector.$pristine" class="help-block">Enter a valid tag.</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <!--button type="button" class="btn btn-default" ng-click="new_story.preview()">Preview</button-->
+                  <!--button type="button" class="btn btn-info" ng-disabled="storyForm.$invalid">Save</button-->
+                </div>
+              </fieldset>
+              <script>
+                function readURL(input) {
+                  if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                      document.getElementById('thumb2').value = e.target.result;
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                    console.log('test');
+                  }
+                }
+              </script>
+              <script>
+                CKEDITOR.replace( 'editor1' );
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="row">
+          <div>
+            <br>
+            <br>
+          </div>
+        </div>
+        <!--button type="button" class="btn btn-default" ng-click="new_story.preview()">Preview</button-->
+        <!--button type="button" class="btn btn-info" ng-disabled="storyForm.$invalid">Save</button-->
+        <div class="statProfile">
+          <a class="btn btn-outline-primary btn-sm btn-block" ng-disabled="storyForm.$invalid" ng-click="editStory(new_story)">
+          Submit edit</a>
+        </div>
+        <div class="statProfile">
+          <a class="btn btn-outline-success btn-sm btn-block" href=""> Push Story</a>
+        </div>
+        <div class="statProfile">
+          <a class="btn btn-outline-primary btn-sm btn-block" href="javascript:history.go(-1)">Back to list</a>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

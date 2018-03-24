@@ -3,7 +3,7 @@ font-family: 'Lato', sans-serif;
 }
 
 .navbar {
-	background-color: #052334 !important;
+ background-color: #052334 !important;
 	/*#3787d9*/
 }
 
@@ -25,9 +25,10 @@ font-family: 'Lato', sans-serif;
 }
 
 #navbarToggler{
-  margin-left: -1%;
-	font-size: 20px;
+/*  margin-left: -1%;
+	font-size: 20px;*/
 }
+
 
 .ahref{
 	color: #00A4FF;
@@ -39,9 +40,13 @@ font-family: 'Lato', sans-serif;
 }
 
 .img-avatar{
-	height: 50px;
-  width: 50px;
+	height: 35px;
+  width: 35px;
   border-radius: 50% !important;
+}
+.btnNavbar{
+  background: none;
+  border: none;
 }
 
 #TopbarCnt{

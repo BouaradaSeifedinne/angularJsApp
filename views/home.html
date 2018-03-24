@@ -9,7 +9,7 @@
 	<div class="col-lg-12">
 
 		<div class="container row">
-			<div class="input-group input-group row {{role === 'reporter' ? 'col-11' : 'col-12'}} ">
+			<div class="input-group input-group row {{userCred.role === 'reporter' ? 'col-11' : 'col-12'}} ">
 			  <span class="input-group-btn">
 			    <button class="btn btn-secondary" type="button">Search !</button>
 			  </span>
@@ -19,14 +19,20 @@
 
 		<div class="row">
 
-		    <div class="{{role === 'reporter' ? 'col-sm-9 blog-main' : 'col-sm-9 blog-main'}} " >
+		    <div class="{{userCred.role === 'reporter' ? 'col-sm-9 blog-main' : 'col-sm-9 blog-main'}} " >
 
-          <div class="{{role === 'reporter' ? 'col-sm-9 blog-main' : 'col-sm-12 blog-main'}}  {{taskStatus === true ? 'bg-success' : 'bg-danger'}}  text-white" ng-show="taskStatus" style="text-align: center;padding: 1%;margin: 2%;">
+          <div class="{{userCred.role === 'reporter' ? 'col-sm-9 blog-main' : 'col-sm-12 blog-main'}}  {{taskStatus === true ? 'bg-success' : 'bg-danger'}}  text-white" ng-show="taskStatus" style="text-align: center;padding: 1%;margin: 2%;">
             {{taskMsg}}
           </div>
 
 
-					<div style="margin-top: 3%; margin-left: 0%; border:1px solid #D5DCE5;"  class="row" ng-repeat="story in stories | filter:{content : research}">
+                    <!--<div style="margin-top: 3%; margin-left: 0%; border:1px solid #D5DCE5;"  
+                    class="row" ng-repeat="story in stories | filter:{content : research}">-->
+                    
+                    <div style="margin-top: 3%; margin-left: 0%; border:1px solid #D5DCE5;"  
+                    class="row" ng-repeat="story in stories |  orderBy : story.dateCreationStory : true 
+                    |  filter:{summary : research} 
+                    ">
 
 
 					  	<div class="col-sm-3" style="background-image: url(./assets/images/{{story.thumbnail}});  background-position: center;background-repeat: no-repeat;background-size: cover;">
@@ -60,7 +66,7 @@
                         <div class="row">
                             <div class="col-sm-5"><h5>{{story.price}} N.T </h5></div>
                             <div class="col-sm-6">
-                                <p ng-show="role === 'reporter'" ng-switch="story.status">
+                                <p ng-show="userCred.role === 'reporter'" ng-switch="story.status">
                                    <span style="font-size: 14px;" ng-switch-when="Draft" class="btn btn-outline-warning"> {{story.status}}</span>
                                    <span style="font-size: 14px;" ng-switch-when="validation waiting" class="btn btn-outline-info"> {{story.status}}</span>
                                    <span style="font-size: 14px;" ng-switch-when="Published" class="btn btn-outline-success"> {{story.status}}</span>
@@ -84,57 +90,96 @@
 
         <div class="col-sm-2 offset-sm-1 blog-sidebar"  >
 
-          <div style="margin-top: 5%;" ng-show="role === 'reporter'">
+          <div style="margin-top: 5%;" ng-show="userCred.role === 'reporter'">
               	<div class="theme-purchases__item" style="display: flex !important;font-size: 12px;letter-spacing: -.01em;line-height: 1.5;padding: 20px 15px;flex: 1 0 auto;text-align: center !important;font-size: 12px;color: #838E95;">
-	                    <span ng-if="role == 'reporter'" > <h5 class="mb-0" > <i class="bootstrap-themes-icon-cart"></i>210</h5>Story purchased </span>
-                      <span ng-if="role != 'reporter'"> <h5 class="mb-0" > <i class="bootstrap-themes-icon-cart"></i>10</h5> Purchases </span>
+	                    <span ng-if="userCred.role == 'reporter'" > <h5 class="mb-0" > <i class="bootstrap-themes-icon-cart"></i>210</h5>Story purchased </span>
+                      <span ng-if="userCred.role != 'reporter'"> <h5 class="mb-0" > <i class="bootstrap-themes-icon-cart"></i>10</h5> Purchases </span>
 	              </div>
          </div>
 
-  <!--          <h4 style="margin-top: 10%"> Your Tags</h4>
+  
+
+  <div class="statProfile" > <a class="btn btn-outline-success btn-sm btn-block" href="#!/story/add_story" ng-show="userCred.role === 'reporter'"> Add story </a> </div>
 
 
-            <!-- <div class="theme-description__list__item" style="font-size: 13px;color: #838E95;padding-top: 15px;padding-bottom: 15px;border-bottom: 1px solid #D5DCE5;"  ng-repeat="userMetaData in userMetaDatas" >
 
-            	<span class="theme-description__item__title"><a href="#!/update/{{userMetaData.metaDataId}}" class="ahref" >{{userMetaData.key}} </a> : </span><span>{{userMetaData.value}}</span>
-              <br>
-              <a href="#!/userMetaData/remove/{{userMetaData.id}}" class="ahref" style="color: #e83e8c;"> <code class="highlighter-rouge">Remove</code></a>    &nbsp&nbsp
-              <a href="#!/userMetaData/update/{{userMetaData.id}}" class="ahref" style="color: #e83e8c;"><code class="highlighter-rouge">Update</code></a>
+  <div class="js-FiltersContainer"  ng-if="userCred.role === 'reporter'" >
 
-            </div> -->
+    <div class="Filters-content">
+
+              
+            <!-- <div class="filterFilters specificFilter">
+                  <span></span>
+                  <input type="text">
+              </div> -->
+
+              <a class="Filters-choice  isActive" data-filter="461031!23" data-noaccent="Viscorelax" title="Viscorelax">
+                <div class="Filters-choice  isActive"  >
+                    <input type="checkbox" id="filter_" class="check">
+                    <label for="filter_" class="Filters-choiceTxt ">
+                        <span class="Filters-choiceLabel" ng-click="FiltersByStatus('Draft')" >Draft</span>                
+                    </label>
+                    </div>
+                </a>
+              
+
+              <a class="Filters-choice  isActive" data-filter="461031!23" data-noaccent="Viscorelax" title="Viscorelax">
+                  
+                  <input type="checkbox" id="filter_" class="check">
+                  
+                  <label for="filter_" class="Filters-choiceTxt ">
+                      <span class="Filters-choiceLabel" ng-click="FiltersByStatus('validation waiting')" >valid. waiting</span>                            
+                  </label>
+              </a>
+
+              
+
+              <a class="Filters-choice  isActive" data-filter="448510!23" data-noaccent="Novadis" title="Novadis">
+                  
+                  <input type="checkbox" id="filter_" class="check">
+                  
+                  <label for="filter_" class="Filters-choiceTxt ">
+                      <span class="Filters-choiceLabel" ng-click="FiltersByStatus('Published')" >Published</span>                            
+                  </label>
+              </a>
+              
+              <a class="Filters-choice  isActive" data-filter="448510!23" data-noaccent="Novadis" title="Novadis">
+                  
+                  <input type="checkbox" id="filter_" class="check">
+                  
+                  <label for="filter_" class="Filters-choiceTxt ">
+                      <span class="Filters-choiceLabel"  ng-click="FiltersByStatus('Rejected')" >Rejected</span>                            
+                  </label>
+              </a>
+
+              <a class="Filters-choice  isActive" data-filter="448510!23" data-noaccent="Novadis" title="Novadis">
+                  
+                    <input type="checkbox" id="filter_" class="check">
+                    
+                    <label for="filter_" class="Filters-choiceTxt ">
+                        <span class="Filters-choiceLabel"  ng-click="FiltersByStatus('All')" >All</span>                            
+                    </label>
+                </a>
+
+          </div>
+
+          
+      </div>
+
+      <div class="filterFilters specificFilter">
+          <span></span>
+
+      </div> 
 
 
 <!--
-
-						<div class="theme-description__list__item" style="font-size: 13px;color: #838E95;padding-top: 15px;padding-bottom: 15px;border-bottom: 1px solid #D5DCE5;" >
-								<span class="theme-description__item__title"><a href="#!" class="ahref" >Country </a> : </span>
-								<span> <span ng-click="research = research + 'France ' ">France</span>,  <span ng-click="research = research + 'United Arab Emirates ' "> United Arab Emirates,  <span ng-click="research = research + 'Singapore ' ">Singapore</span></span>
-						</div>
-						<div class="theme-description__list__item" style="font-size: 13px;color: #838E95;padding-top: 15px;padding-bottom: 15px;border-bottom: 1px solid #D5DCE5;" >
-								<span class="theme-description__item__title"><a href="#!" class="ahref" >Types of news </a> : </span>
-								<span>General News, Social News", Tech News</span>
-						</div>
-						<div class="theme-description__list__item" style="font-size: 13px;color: #838E95;padding-top: 15px;padding-bottom: 15px;border-bottom: 1px solid #D5DCE5;" >
-								<span class="theme-description__item__title"><a href="#!" class="ahref" >Sector </a> : </span>
-								<span>Financial, Agribusiness</span>
-						</div>
-						<div class="theme-description__list__item" style="font-size: 13px;color: #838E95;padding-top: 15px;padding-bottom: 15px;border-bottom: 1px solid #D5DCE5;" >
-								<span class="theme-description__item__title"><a href="#!" class="ahref" >Company </a> : </span>
-								<span>IBM, Google, Facebook, Nestle</span>
-						</div>
-							<br>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-warning" href="">Tags manager</a>
- -->
-
-  <div class="statProfile" > <a class="btn btn-outline-success btn-sm btn-block" href="#!/story/add_story" ng-show="role === 'reporter'"> Add story </a> </div>
-
-  <article class="facet"  ng-if="role === 'member'">
+  <article class="facet"  ng-if="userCred.role === 'member'">
     <div class="-head">
         <span class="-name">Get User Tag's and dsplay</span> <i class="osh-font-minus -toggle"></i>
     </div>
 
     <div class="-content">
-      <form class="facet-form -facet" >
+      <form class="facet-form -facet" > 
         <div class="facet-el">
             <div class="facet-link" data-facetvalue="50" >
                 <i class="osh-font-checkbox -checkbox-toggle"></i>
@@ -154,9 +199,36 @@
 
   </article>
 
+-->
 
 
+<div class="js-FiltersContainer"  ng-if="userCred.role === 'member'">
+  <h3>User tag's</h3> 
+    <div class="Filters-content">
 
+            
+          <div class="filterFilters specificFilter">
+                <span></span>
+                <input type="text">
+          </div>
+
+        <div ng-repeat="tag in userCred.tags">
+            <label for="filter_" class="Filters-choiceTxt "> {{tag.key}} </label>
+          <a class="Filters-choice  isActive" data-filter="422530!23" style="margin-left: 10%;">      
+            <input type="checkbox" id="filter_" class="check">
+                <span class="Filters-choiceLabel">{{tag.value}} </span>                           
+           </a>
+        </div>
+    
+
+        
+    </div>
+
+    <div class="filterFilters specificFilter">
+        <span></span>
+    </div> 
+
+</div>
           </div>
 
         </div><!-- /.blog-sidebar row -->
